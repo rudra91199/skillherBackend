@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 const getAllJobs = async (req, res) => {
   try {
-    const jobs = await Job.find();
+    const jobs = await Job.find({status:"active"});
     res.status(200).json(jobs);
   } catch (error) {
     res.status(500).json({ message: error.message });
