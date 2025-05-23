@@ -1,6 +1,18 @@
 import sendResponse from "../../utils/sendResponse.js";
 import { User } from "./auth.model.js";
 
+const getAllUsers = async (req, res) => {
+  try {
+    const response = await User.find();
+    sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Users retrieved successfully",
+      data: response,
+    });
+  } catch (error) {}
+};
+
 const createUser = async (req, res) => {
   try {
     const userData = req.body;
@@ -56,6 +68,7 @@ const checkAuth = async (req, res) => {
 };
 
 export const AuthController = {
+  getAllUsers,
   createUser,
   checkAuth,
 };

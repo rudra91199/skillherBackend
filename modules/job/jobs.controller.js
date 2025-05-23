@@ -130,7 +130,6 @@ const getApplications = async (req, res) => {
 const handleApplicationStatusChange = async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
-  console.log(status, id);
   try {
     const updatedApplication = await jobApplication.findByIdAndUpdate(
       id,
